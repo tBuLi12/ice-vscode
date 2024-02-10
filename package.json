@@ -1,0 +1,89 @@
+{
+    "name": "ice-lang",
+    "displayName": "ice-lang",
+    "description": "ice language support",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "languages": [
+            {
+                "id": "ice",
+                "aliases": [
+                    "Ice",
+                    "ice"
+                ],
+                "extensions": [
+                    ".ice"
+                ],
+                "icon": {
+                    "light": "./icons/icelogo.png",
+                    "dark": "./icons/icelogo.png"
+                },
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "semanticTokenModifiers": [
+            {
+                "id": "controlFlow",
+                "description": "Style for control flow related tokens"
+            }
+        ],
+        "semanticTokenScopes": [
+            {
+                "language": "ice",
+                "scopes": {
+                    "keyword": [
+                        "keyword.other.ice"
+                    ],
+                    "keyword.controlFlow": [
+                        "keyword.control.ice"
+                    ]
+                }
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ice",
+                "scopeName": "source.ice",
+                "path": "./ice.tmLanguage.json"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run package",
+        "compile": "webpack",
+        "watch": "webpack --watch",
+        "package": "webpack --mode production --devtool hidden-source-map",
+        "compile-tests": "tsc -p . --outDir out",
+        "watch-tests": "tsc -p . -w --outDir out",
+        "pretest": "npm run compile-tests && npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^8.1.0",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "16.x",
+        "@types/vscode": "^1.85.0",
+        "@typescript-eslint/eslint-plugin": "^5.56.0",
+        "@typescript-eslint/parser": "^5.56.0",
+        "@vscode/test-electron": "^2.3.0",
+        "eslint": "^8.36.0",
+        "glob": "^8.1.0",
+        "mocha": "^10.2.0",
+        "ts-loader": "^9.4.2",
+        "typescript": "^4.9.5",
+        "webpack": "^5.76.3",
+        "webpack-cli": "^5.0.1"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^9.0.1"
+    }
+}

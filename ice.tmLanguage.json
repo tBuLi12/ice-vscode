@@ -1,0 +1,68 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Ice",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#class-identifier"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.ice",
+                    "match": "\\b(if|while|else|return|continue|break|each|try)\\b"
+                },
+                {
+                    "name": "keyword.other.ice",
+                    "match": "\\b(fun|trait|type|mut|as|def|var|let|this|This|const|is)\\b"
+                }
+            ]
+        },
+        "variables": {
+            "patterns": [
+                {
+                    "name": "variable.other.ice",
+                    "match": "(\\b|.)[a-z]\\w*\\b"
+                },
+                {
+                    "name": "entity.name.function.ice",
+                    "match": "(\\b|.)[a-z]\\w*\\(.*\\)"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.ice",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.ice",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "class-identifier": {
+            "patterns": [
+                {
+                    "match": "\\b[A-Z]\\w*\\b",
+                    "name": "support.class.ice"
+                },
+                {
+                    "match": "\\b(int|bool|char|float)\\b",
+                    "name": "storage.type.primitive.ice"
+                }
+            ]
+        }
+    },
+    "scopeName": "source.ice",
+    "foldingStartMarker": "\\{\\s*$",
+    "foldingStopMarker": "^\\s*\\}",
+    "fileTypes": ["ice"]
+}
